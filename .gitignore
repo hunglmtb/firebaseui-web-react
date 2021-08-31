@@ -11,3 +11,6 @@ example/public/bundle.js
 example/public/bundle.js.map
 dist/node_modules
 firebase-debug.log
+.idea
+yarn.lock
+example/yarn.lock

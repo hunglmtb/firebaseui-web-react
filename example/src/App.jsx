@@ -21,7 +21,7 @@ import ReactDOM from 'react-dom';
 // Firebase.
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import FirebaseAuth from 'react-firebaseui-vn/FirebaseAuth';
 
 // Styles
 import styles from './app.css'; // This uses CSS modules.
@@ -42,6 +42,10 @@ class App extends React.Component {
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      {
+        defaultCountry: 'VN',
+        provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      }
     ],
     callbacks: {
       signInSuccessWithAuthResult: () => false,
@@ -80,7 +84,7 @@ class App extends React.Component {
         <div className={styles.caption}>This is a cool demo app</div>
         {this.state.isSignedIn !== undefined && !this.state.isSignedIn &&
           <div>
-            <StyledFirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig}
+            <FirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig}
                                 firebaseAuth={firebaseApp.auth()}/>
           </div>
         }
