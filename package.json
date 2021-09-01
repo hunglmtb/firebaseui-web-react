@@ -1,6 +1,6 @@
 {
   "name": "react-firebaseui-vi",
-  "version": "5.0.5",
+  "version": "5.0.10",
   "description": "React wrapper for firebaseui: Javascript library for customizable UI on top of Firebase SDK",
   "files": [
     "FirebaseAuth.d.ts",
@@ -19,10 +19,12 @@
   "main": "index.js",
   "scripts": {
     "clean": "del .\\dist",
-    "build": "webpack -p && babel src --out-dir dist -s && cp ./types/* README.md LICENSE package.json dist && cd dist && yarn install --only=production && cd -",
+    "build": "webpack -p && babel src --out-dir dist -s && cross-env cp ./types/* README.md LICENSE package.json dist && cd dist && yarn install --only=production && cd ..",
     "pub": "yarn clean && yarn build && yarn publish dist",
     "ip": "cd dist && yarn install --only=production && cd ..",
-    "b": "webpack -p && babel src --out-dir dist -s"
+    "b": "webpack -p && babel src --out-dir dist -s",
+    "cpc": "for %I in ( types\\* README.md LICENSE package.json) do copy %I dist",
+    "bw": "webpack -p && babel src --out-dir dist -s && yarn cpc && yarn install --only=production && cd .."
   },
   "author": "Google",
   "repository": {
@@ -35,7 +37,7 @@
     "react": ">=15 <=17"
   },
   "dependencies": {
-    "firebaseui-vi": "^5.0.9"
+    "firebaseui-vi": "^5.0.10"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
